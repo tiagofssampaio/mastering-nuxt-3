@@ -24,10 +24,11 @@
 
 <script setup>
 const error = useError();
+const firstLesson = useFirstLesson();
 
 const handleError = async () => {
   clearError({
-    redirect: '/course/chapter/1-chapter-1/lesson/1-introduction-to-typescript-with-vue-js-3'
+    redirect: firstLesson.path
   })
 }
 

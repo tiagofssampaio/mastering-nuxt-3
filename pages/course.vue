@@ -4,7 +4,7 @@
       <h1>
         <span class="font-medium">
           Course:
-          <span class="font-bold">{{ title }}</span>
+          <span class="font-bold">{{ course.title }}</span>
         </span>
       </h1>
       <UserCard />
@@ -15,7 +15,7 @@
           class="prose mr-4 p-8 bg-white rounded-md min-w-[20ch] max-w-[30ch] flex flex-col"
       >
         <h3>Chapters</h3>
-        <div class="space-y-1 mb-4 flex flex-col" v-for="chapter in chapters" :key="chapter.slug">
+        <div class="space-y-1 mb-4 flex flex-col" v-for="chapter in course.chapters" :key="chapter.slug">
           <h4>{{ chapter.title }}</h4>
           <NuxtLink
               v-for="(lesson, index) in chapter.lessons"
@@ -57,12 +57,11 @@
 </template>
 
 <script setup>
-const { chapters, title } = useCourse();
+const course = await useCourse();
+const firstLesson = await useFirstLesson();
 
 const resetError = async (error) => {
-  await navigateTo(
-      '/course/chapter/1-chapter-1/lesson/1-introduction-to-typescript-with-vue-js-3'
-  );
+  await navigateTo(firstLesson.path);
   error.value = null;
 }
 </script>

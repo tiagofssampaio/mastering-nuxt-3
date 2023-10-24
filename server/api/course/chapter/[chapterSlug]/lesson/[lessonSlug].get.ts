@@ -7,6 +7,7 @@ export default defineEventHandler(async (event) => {
     // @ts-ignore
     const { chapterSlug, lessonSlug } = event.context.params;
 
+    // Protect the route if the user is not on the first chapter
     if (chapterSlug !== '1-chapter-1') {
         protectRoute(event);
     }

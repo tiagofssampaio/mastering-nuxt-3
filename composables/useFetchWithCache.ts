@@ -9,9 +9,10 @@ export default async <T>(url: string) => {
     });
 
     if (!cached.value) {
-        const { data, error } = await useFetch<T>(
-            url
-        );
+        // Pass browser cookies to the server so it's authenticated
+        const { data, error } = await useFetch<T>(url, {
+            headers: useRequestHeaders(['cookie']),
+        });
 
         if (error.value) {
             throw createError({

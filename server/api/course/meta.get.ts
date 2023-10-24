@@ -59,8 +59,10 @@ export default defineEventHandler(
         }
 
         // Map the outline so we can add a path to each lesson
+        // @ts-ignore
         const chapters = outline.chapters.map((chapter) => ({
             ...chapter,
+            // @ts-ignore
             lessons: chapter.lessons.map((lesson) => ({
                 ...lesson,
                 path: `/course/chapter/${chapter.slug}/lesson/${lesson.slug}`,

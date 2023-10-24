@@ -1,4 +1,4 @@
-import { Lesson } from "@prisma/client/edge";
+import { Lesson } from '@prisma/client';
 
 // Intersection
 export type LessonWithPath = Lesson & {
